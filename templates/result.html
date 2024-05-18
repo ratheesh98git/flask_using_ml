@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/result.css') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='img/images.jpeg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Prediction Result</h1>
+        <p class="prediction">Predicted Company: {{ prediction }}</p>
+        <p class="user-input">You inverest amount for this company: {{ amount }}</p>
+    </div>
+    <script src="{{ url_for('static', filename='js/result.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "joblib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "joblib",
+        "description": "joblib",
+        "detail": "joblib",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "StandardScaler",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "RandomForestClassifier",
+        "importPath": "sklearn.ensemble",
+        "description": "sklearn.ensemble",
+        "isExtraImport": true,
+        "detail": "sklearn.ensemble",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def home():\n    return render_template('login.html')\n@app.route('/login', methods=['POST'])\ndef login():\n    return redirect(url_for('search'))\n@app.route('/search', methods=['GET', 'POST'])\ndef search():\n    if request.method == 'POST':\n        amount = float(request.form['amount'])\n        return redirect(url_for('result', amount=amount))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def login():\n    return redirect(url_for('search'))\n@app.route('/search', methods=['GET', 'POST'])\ndef search():\n    if request.method == 'POST':\n        amount = float(request.form['amount'])\n        return redirect(url_for('result', amount=amount))\n    return render_template('search.html')\ndef make_prediction(amount):\n    X_input = [[amount, amount, amount, amount, amount]] ",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "search",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def search():\n    if request.method == 'POST':\n        amount = float(request.form['amount'])\n        return redirect(url_for('result', amount=amount))\n    return render_template('search.html')\ndef make_prediction(amount):\n    X_input = [[amount, amount, amount, amount, amount]] \n    X_input_scaled = scaler.transform(X_input)\n    prediction = model.predict(X_input_scaled)\n    return prediction",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "make_prediction",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def make_prediction(amount):\n    X_input = [[amount, amount, amount, amount, amount]] \n    X_input_scaled = scaler.transform(X_input)\n    prediction = model.predict(X_input_scaled)\n    return prediction\n@app.route('/result/<amount>')\ndef result(amount):\n    prediction = make_prediction(float(amount))\n    return render_template('result.html', prediction=prediction, amount=amount)\nif __name__ == '__main__':",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "result",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def result(amount):\n    prediction = make_prediction(float(amount))\n    return render_template('result.html', prediction=prediction, amount=amount)\nif __name__ == '__main__':\n    app.run(debug=True,host=\"localhost\",port=5000)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__, static_url_path='/static')\nmodel = joblib.load(\"ajith_model.pkl\")  \nscaler = joblib.load(\"ajith_scaler.pkl\") \n@app.route('/')\ndef home():\n    return render_template('login.html')\n@app.route('/login', methods=['POST'])\ndef login():\n    return redirect(url_for('search'))\n@app.route('/search', methods=['GET', 'POST'])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "model = joblib.load(\"ajith_model.pkl\")  \nscaler = joblib.load(\"ajith_scaler.pkl\") \n@app.route('/')\ndef home():\n    return render_template('login.html')\n@app.route('/login', methods=['POST'])\ndef login():\n    return redirect(url_for('search'))\n@app.route('/search', methods=['GET', 'POST'])\ndef search():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "scaler",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "scaler = joblib.load(\"ajith_scaler.pkl\") \n@app.route('/')\ndef home():\n    return render_template('login.html')\n@app.route('/login', methods=['POST'])\ndef login():\n    return redirect(url_for('search'))\n@app.route('/search', methods=['GET', 'POST'])\ndef search():\n    if request.method == 'POST':",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "make_prediction",
+        "kind": 2,
+        "importPath": "machine",
+        "description": "machine",
+        "peekOfCode": "def make_prediction(amount):\n    X_input = [[amount, amount, amount, amount, amount]]  \n    scaler = joblib.load(\"ajith_scaler.pkl\")\n    X_input_scaled = scaler.transform(X_input)\n    model = joblib.load(\"ajith_model.pkl\")\n    prediction = model.predict(X_input_scaled)\n    return prediction\namount = float(input(\"Enter the amount: \"))\nprediction = make_prediction(amount)\nprint(\"Predicted Company:\", prediction)",
+        "detail": "machine",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "machine",
+        "description": "machine",
+        "peekOfCode": "df = pd.read_csv(\"D:/ajith_code/data.csv\")  \nX = df[['Open', 'High', 'Low', 'Close', 'Volume']].values\ny = df['Company'].values  \nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X)\nmodel = RandomForestClassifier()\nmodel.fit(X_scaled, y)\njoblib.dump(model, \"ajith_model.pkl\")\njoblib.dump(scaler, \"ajith_scaler.pkl\")\ndef make_prediction(amount):",
+        "detail": "machine",
+        "documentation": {}
+    },
+    {
+        "label": "X",
+        "kind": 5,
+        "importPath": "machine",
+        "description": "machine",
+        "peekOfCode": "X = df[['Open', 'High', 'Low', 'Close', 'Volume']].values\ny = df['Company'].values  \nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X)\nmodel = RandomForestClassifier()\nmodel.fit(X_scaled, y)\njoblib.dump(model, \"ajith_model.pkl\")\njoblib.dump(scaler, \"ajith_scaler.pkl\")\ndef make_prediction(amount):\n    X_input = [[amount, amount, amount, amount, amount]]  ",
+        "detail": "machine",
+        "documentation": {}
+    },
+    {
+        "label": "y",
+        "kind": 5,
+        "importPath": "machine",
+        "description": "machine",
+        "peekOfCode": "y = df['Company'].values  \nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X)\nmodel = RandomForestClassifier()\nmodel.fit(X_scaled, y)\njoblib.dump(model, \"ajith_model.pkl\")\njoblib.dump(scaler, \"ajith_scaler.pkl\")\ndef make_prediction(amount):\n    X_input = [[amount, amount, amount, amount, amount]]  \n    scaler = joblib.load(\"ajith_scaler.pkl\")",
+        "detail": "machine",
+        "documentation": {}
+    },
+    {
+        "label": "scaler",
+        "kind": 5,
+        "importPath": "machine",
+        "description": "machine",
+        "peekOfCode": "scaler = StandardScaler()\nX_scaled = scaler.fit_transform(X)\nmodel = RandomForestClassifier()\nmodel.fit(X_scaled, y)\njoblib.dump(model, \"ajith_model.pkl\")\njoblib.dump(scaler, \"ajith_scaler.pkl\")\ndef make_prediction(amount):\n    X_input = [[amount, amount, amount, amount, amount]]  \n    scaler = joblib.load(\"ajith_scaler.pkl\")\n    X_input_scaled = scaler.transform(X_input)",
+        "detail": "machine",
+        "documentation": {}
+    },
+    {
+        "label": "X_scaled",
+        "kind": 5,
+        "importPath": "machine",
+        "description": "machine",
+        "peekOfCode": "X_scaled = scaler.fit_transform(X)\nmodel = RandomForestClassifier()\nmodel.fit(X_scaled, y)\njoblib.dump(model, \"ajith_model.pkl\")\njoblib.dump(scaler, \"ajith_scaler.pkl\")\ndef make_prediction(amount):\n    X_input = [[amount, amount, amount, amount, amount]]  \n    scaler = joblib.load(\"ajith_scaler.pkl\")\n    X_input_scaled = scaler.transform(X_input)\n    model = joblib.load(\"ajith_model.pkl\")",
+        "detail": "machine",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "machine",
+        "description": "machine",
+        "peekOfCode": "model = RandomForestClassifier()\nmodel.fit(X_scaled, y)\njoblib.dump(model, \"ajith_model.pkl\")\njoblib.dump(scaler, \"ajith_scaler.pkl\")\ndef make_prediction(amount):\n    X_input = [[amount, amount, amount, amount, amount]]  \n    scaler = joblib.load(\"ajith_scaler.pkl\")\n    X_input_scaled = scaler.transform(X_input)\n    model = joblib.load(\"ajith_model.pkl\")\n    prediction = model.predict(X_input_scaled)",
+        "detail": "machine",
+        "documentation": {}
+    },
+    {
+        "label": "amount",
+        "kind": 5,
+        "importPath": "machine",
+        "description": "machine",
+        "peekOfCode": "amount = float(input(\"Enter the amount: \"))\nprediction = make_prediction(amount)\nprint(\"Predicted Company:\", prediction)",
+        "detail": "machine",
+        "documentation": {}
+    },
+    {
+        "label": "prediction",
+        "kind": 5,
+        "importPath": "machine",
+        "description": "machine",
+        "peekOfCode": "prediction = make_prediction(amount)\nprint(\"Predicted Company:\", prediction)",
+        "detail": "machine",
+        "documentation": {}
+    }
+]
