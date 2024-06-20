@@ -3,7 +3,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 
-df = pd.read_csv("D:/ajith_code/data.csv")  
+df = pd.read_csv("D:/ratheesh_code/data.csv")  
 
 
 X = df[['Open', 'High', 'Low', 'Close', 'Volume']].values
